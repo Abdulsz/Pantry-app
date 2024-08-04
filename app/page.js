@@ -205,12 +205,7 @@ export default function Home() {
           />
         </Box>
 
-        <Box display="flex"
-          justifyContent="center"
-          alignItems="center"
-          width="100%"
-          px={2} 
-          >
+        <Box>
           <Box
             width="100%"
             height="100px"
