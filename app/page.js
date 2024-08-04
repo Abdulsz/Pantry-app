@@ -205,7 +205,7 @@ export default function Home() {
           />
         </Box>
 
-        <Box>
+        <Container>
           <Box
             width="100%"
             height="100px"
@@ -272,7 +272,7 @@ export default function Home() {
               </Box>
             ))}
           </Stack>
-        </Box>
+        </Container>
       </Box>
     </Box>
   );
