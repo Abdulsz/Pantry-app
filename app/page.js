@@ -205,7 +205,12 @@ export default function Home() {
           />
         </Box>
 
-        <Container>
+        <Box display="flex"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          px={2} 
+          >
           <Box
             width="100%"
             height="100px"
@@ -272,7 +277,7 @@ export default function Home() {
               </Box>
             ))}
           </Stack>
-        </Container>
+        </Box>
       </Box>
     </Box>
   );
