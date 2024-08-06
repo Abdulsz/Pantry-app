@@ -227,8 +227,8 @@ export default function Home() {
             {filteredInvetory.map(({ name, quantity }) => (
               <Box
                 key={name}
-                width="100%"
-                display="flex"
+                display="grid"
+                gridTemplateColumns="1fr 5fr 1fr"
                 alignItems="center"
                 justifyContent="space-between"
                 bgcolor="#DD5349"
@@ -258,6 +258,7 @@ export default function Home() {
                     "&:hover": {
                       backgroundColor: "#333333",
                     },
+                    
                     fontFamily: "'Roboto', sans-serif",
                     textTransform: "none",
                     padding: "10px 20px",
