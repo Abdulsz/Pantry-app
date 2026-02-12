@@ -1,17 +1,23 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import React from 'react';
+import Head from 'next/head';
+import { Box } from '@mui/material';
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Pantry Tracker",
-  description: "Pantry tracker",
-};
-
-export default function RootLayout({ children }) {
+function Layout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <Box
+      sx={{
+        mx: 'auto',
+        maxWidth: '1200px',
+        p: 2,
+        backgroundColor: 'black',
+      }}
+    >
+      <Head>
+        <title>Inventory Management System</title>
+      </Head>
+      {children}
+    </Box>
   );
 }
+
+export default Layout;
