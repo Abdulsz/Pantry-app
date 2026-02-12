@@ -1,7 +1,1 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}
+{"compilerOptions": {"target": "es2022", "jsx": "react"}}
