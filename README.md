@@ -25,6 +25,23 @@ Backend: Firebase Firestore for database management
 Storage: Firebase Storage for storing item images
 Camera Integration: Webcam capture using the react-webcam library
 
+Setup Instructions
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up Firebase configuration:
+   - Copy `.env.local.example` to `.env.local`
+   - Add your Firebase credentials to `.env.local`
+   - You can get these credentials from your Firebase project settings
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
 Contributions are welcome!
 
 
