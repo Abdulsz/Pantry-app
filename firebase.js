@@ -1,26 +1,19 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {getFirestore} from 'firebase/firestore';
-import { getStorage } from "firebase/storage"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Add dark mode configuration to Firebase Firestore
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA67UqQgVSBO4iAv_kJkKce-e_NcE0K1QY",
-  authDomain: "inventory-management-e2172.firebaseapp.com",
-  projectId: "inventory-management-e2172",
-  storageBucket: "inventory-management-e2172.appspot.com",
-  messagingSenderId: "607687483381",
-  appId: "1:607687483381:web:2d908a3e2591f1b7f08abc",
-  measurementId: "G-9311VQ08YZ"
+  apiKey: 'YOUR_API_KEY',
+  authDomain: 'YOUR_AUTH_DOMAIN',
+  projectId: 'YOUR_PROJECT_ID',
+  storageBucket: 'YOUR_STORAGE_BUCKET',
+  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+  appId: 'YOUR_APP_ID',
+  measurementId: 'YOUR_MEASUREMENT_ID',
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);
-const storage = getStorage(app);
-
-export { firestore };
-export { storage };
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+db.settings({
+  host: 'YOUR_DATABASE_URL',
+  ssl: true,
+});
