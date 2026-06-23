@@ -24,7 +24,7 @@ import {
 import {  ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Webcam from "react-webcam";
 
-// Initialize Firebase storage
+const storage = getStorage();
 //const storage = getStorage();
 
 export default function Home() {
