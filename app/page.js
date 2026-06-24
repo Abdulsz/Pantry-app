@@ -143,6 +143,11 @@ export default function Home() {
   );
 
   return (
+ <Box>
+ <Container width="100%" height="350px" position="relative">
+ <img
+ src="https://firebasestorage.googleapis.com/v0/b/fooddelivery-6176f.appspot.com/o/inventory%2Fnew%20tomatos.jpg?alt=media&token=df7c6654-3ae9-42df-8278-fd87f9765c4a"
+ style={{}
     <Box>
       <Container width="100%" height="350px" position="relative">
         <img
