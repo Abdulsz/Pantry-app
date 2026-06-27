@@ -11,6 +11,8 @@ import {
   TextField,
   Button,
   Container,
+  ThemeProvider,
+  createTheme,
 } from "@mui/material";
 import {
   collection,
@@ -26,6 +28,27 @@ import Webcam from "react-webcam";
 
 // Initialize Firebase storage
 //const storage = getStorage();
+
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#DD5349',
+    },
+    background: {
+      default: '#fff',
+      paper: '#fff',
+    },
+    text: {
+      primary: '#000',
+      secondary: '#333',
+    },
+    buttons: {
+      default: '#000',
+      hover: '#333333',
+    },
+  },
+});
 
 export default function Home() {
   const [inventory, setInventory] = useState([]);
