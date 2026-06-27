@@ -11,6 +11,9 @@ import {
   TextField,
   Button,
   Container,
+  ThemeProvider,
+  createTheme,
+  IconButton,
 } from "@mui/material";
 import {
   collection,
@@ -38,6 +41,16 @@ export default function Home() {
   const [imgSrc, setImgSrc] = useState(null);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+      primary: {
+        main: '#DD5349',
+      },
+    },
+  });
 
 
 
