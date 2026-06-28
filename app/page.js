@@ -38,6 +38,9 @@ export default function Home() {
   const [imgSrc, setImgSrc] = useState(null);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [bgColor, setBgColor] = useState('#fff');
+  const [textColor, setTextColor] = useState('#000');
 
 
 
@@ -141,6 +144,12 @@ export default function Home() {
   const filteredInventory = inventory.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleDarkModeToggle = () => {
+    setDarkMode(!darkMode);
+    setBgColor(darkMode ? '#fff' : '#121212');
+    setTextColor(darkMode ? '#000' : '#fff');
+  };
 
   return (
     <Box>
