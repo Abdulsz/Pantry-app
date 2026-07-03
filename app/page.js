@@ -156,14 +156,14 @@ export default function Home() {
         />
       </Container>
 
-      <Box
-        width="100%"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        py={4}
-      >
-        <Typography
+<Box
+ width="100%"
+ display="flex"
+ justifyContent="center"
+ alignItems="center"
+ py={4}
+ style={{ backgroundColor: "#333" }}
+ >        <Typography
           variant="h1"
           color="#DD5349"
           fontFamily="'Roboto', sans-serif"
