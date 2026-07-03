@@ -197,33 +197,6 @@ export default function Home() {
       </Box>
 
       <Box
-        width="100%"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        pb={2}
-      >
-        <Button
-          sx={{
-            backgroundColor: darkMode ? "#ffffff" : "black",
-            color: darkMode ? "black" : "white",
-            "&:hover": {
-              backgroundColor: darkMode ? "#e0e0e0" : "#333333",
-            },
-            fontFamily: "'Roboto', sans-serif",
-            textTransform: "none",
-            padding: "10px 20px",
-            fontSize: "16px",
-            fontWeight: 500,
-          }}
-          variant="contained"
-          onClick={() => setDarkMode((prev) => !prev)}
-        >
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </Button>
-      </Box>
-
-      <Box
         width="100vw"
         display="flex"
         flexDirection="column"
@@ -238,7 +211,7 @@ export default function Home() {
             top="50%"
             left="50%"
             width={600}
-            bgcolor="white"
+            bgcolor={darkMode ? "#1e1e1e" : "white"}
             border="2px solid #0000"
             boxShadow={24}
             p={4}
@@ -260,11 +233,25 @@ export default function Home() {
                 onChange={(e) => {
                   setItemName(e.target.value);
                 }}
+                sx={{
+                  input: { color: darkMode ? "#fff" : "#000" },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: darkMode ? "#fff" : "rgba(0, 0, 0, 0.23)",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: darkMode ? "#fff" : "rgba(0, 0, 0, 0.87)",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: darkMode ? "#fff" : "#1976d2",
+                    },
+                  },
+                }}
               />
               <Button
                 sx={{
-                  backgroundColor: "black",
-                  color: "white",
+                  backgroundColor: darkMode ? "#ffffff" : "black",
+                  color: darkMode ? "black" : "white",
                   "&:hover": {
                     backgroundColor: "#333333",
                   },
