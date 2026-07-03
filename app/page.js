@@ -287,10 +287,10 @@ export default function Home() {
             </Stack>
             <Button
               sx={{
-                backgroundColor: "black",
-                color: "white",
+                backgroundColor: darkMode ? "#ffffff" : "black",
+                color: darkMode ? "black" : "white",
                 "&:hover": {
-                  backgroundColor: "#333333",
+                  backgroundColor: darkMode ? "#e0e0e0" : "#333333",
                 },
                 fontFamily: "'Roboto', sans-serif",
                 textTransform: "none",
