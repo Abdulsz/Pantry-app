@@ -38,9 +38,7 @@ export default function Home() {
   const [imgSrc, setImgSrc] = useState(null);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-
-
-
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -143,7 +141,32 @@ export default function Home() {
   );
 
   return (
-    <Box>
+    <Box
+      width="100vw"
+      minHeight="100vh"
+      bgcolor={darkMode ? "#121212" : "#ffffff"}
+      sx={{ transition: "background-color 0.3s ease" }}
+    >
+      <Box width="100%" display="flex" justifyContent="flex-end" p={2}>
+        <Button
+          sx={{
+            backgroundColor: darkMode ? "#ffffff" : "black",
+            color: darkMode ? "black" : "white",
+            "&:hover": {
+              backgroundColor: darkMode ? "#e0e0e0" : "#333333",
+            },
+            fontFamily: "'Roboto', sans-serif",
+            textTransform: "none",
+            padding: "10px 20px",
+            fontSize: "16px",
+            fontWeight: 500,
+          }}
+          variant="contained"
+          onClick={() => setDarkMode((prev) => !prev)}
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </Button>
+      </Box>
       <Container width="100%" height="350px" position="relative">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/fooddelivery-6176f.appspot.com/o/inventory%2Fnew%20tomatos.jpg?alt=media&token=df7c6654-3ae9-42df-8278-fd87f9765c4a"
@@ -174,6 +197,33 @@ export default function Home() {
       </Box>
 
       <Box
+        width="100%"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        pb={2}
+      >
+        <Button
+          sx={{
+            backgroundColor: darkMode ? "#ffffff" : "black",
+            color: darkMode ? "black" : "white",
+            "&:hover": {
+              backgroundColor: darkMode ? "#e0e0e0" : "#333333",
+            },
+            fontFamily: "'Roboto', sans-serif",
+            textTransform: "none",
+            padding: "10px 20px",
+            fontSize: "16px",
+            fontWeight: 500,
+          }}
+          variant="contained"
+          onClick={() => setDarkMode((prev) => !prev)}
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </Button>
+      </Box>
+
+      <Box
         width="100vw"
         display="flex"
         flexDirection="column"
@@ -199,7 +249,9 @@ export default function Home() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <Typography variant="h6">Add Item</Typography>
+            <Typography variant="h6" color={darkMode ? "#fff" : "#000"}>
+              Add Item
+            </Typography>
             <Stack width="100%" direction="row" spacing={2}>
               <TextField
                 variant="outlined"
@@ -273,7 +325,7 @@ export default function Home() {
             top="50%"
             left="50%"
             width={600}
-            bgcolor="white"
+            bgcolor={darkMode ? "#1e1e1e" : "white"}
             border="2px solid #0000"
             boxShadow={24}
             p={4}
@@ -316,7 +368,7 @@ export default function Home() {
             top="50%"
             left="50%"
             width={400}
-            bgcolor="white"
+            bgcolor={darkMode ? "#1e1e1e" : "white"}
             border="2px solid #0000"
             boxShadow={24}
             p={4}
@@ -383,6 +435,20 @@ export default function Home() {
             placeholder="Search Items"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            sx={{
+              input: { color: darkMode ? "#fff" : "#000" },
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  borderColor: darkMode ? "#fff" : "rgba(0, 0, 0, 0.23)",
+                },
+                "&:hover fieldset": {
+                  borderColor: darkMode ? "#fff" : "rgba(0, 0, 0, 0.87)",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: darkMode ? "#fff" : "#1976d2",
+                },
+              },
+            }}
           />
         </Box>
 
@@ -394,7 +460,7 @@ export default function Home() {
             alignItems="center"
             justifyContent="left"
           >
-            <Typography variant="h3" color="#000">
+            <Typography variant="h3" color={darkMode ? "#fff" : "#000"}>
               Inventory Items
             </Typography>
           </Box>
