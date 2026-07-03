@@ -11,6 +11,8 @@ import {
   TextField,
   Button,
   Container,
+  Switch,
+  FormControlLabel,
 } from "@mui/material";
 import {
   collection,
@@ -38,9 +40,7 @@ export default function Home() {
   const [imgSrc, setImgSrc] = useState(null);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-
-
-
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -143,7 +143,14 @@ export default function Home() {
   );
 
   return (
-    <Box>
+    <Box
+      sx={{
+        backgroundColor: darkMode ? "#121212" : "#ffffff",
+        color: darkMode ? "#ffffff" : "#000000",
+        minHeight: "100vh",
+        transition: "background-color 0.3s ease, color 0.3s ease",
+      }}
+    >
       <Container width="100%" height="350px" position="relative">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/fooddelivery-6176f.appspot.com/o/inventory%2Fnew%20tomatos.jpg?alt=media&token=df7c6654-3ae9-42df-8278-fd87f9765c4a"
@@ -155,6 +162,25 @@ export default function Home() {
           }}
         />
       </Container>
+
+      <Box
+        width="100%"
+        display="flex"
+        justifyContent="flex-end"
+        alignItems="center"
+        px={4}
+        py={2}
+      >
+        <FormControlLabel
+          control={
+            <Switch
+              checked={darkMode}
+              onChange={(e) => setDarkMode(e.target.checked)}
+            />
+          }
+          label={darkMode ? "Dark Mode" : "Light Mode"}
+        />
+      </Box>
 
       <Box
         width="100%"
