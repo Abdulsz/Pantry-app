@@ -147,13 +147,13 @@ export default function Home() {
       <Container width="100%" height="350px" position="relative">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/fooddelivery-6176f.appspot.com/o/inventory%2Fnew%20tomatos.jpg?alt=media&token=df7c6654-3ae9-42df-8278-fd87f9765c4a"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-          }}
-        />
+ style={{
+ width: "100%",
+ height: "100%",
+ objectFit: "cover",
+ objectPosition: "center",
+ backgroundColor: "#121212"
+ }}        />
       </Container>
 
       <Box
