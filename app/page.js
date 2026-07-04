@@ -33,6 +33,8 @@ export default function Home() {
   const [captureOpen, setCaptureOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
   const [itemName, setItemName] = useState("");
+  const [itemQuantity, setItemQuantity] = useState("");
+  const [quantityError, setQuantityError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
@@ -78,15 +80,15 @@ export default function Home() {
     setInventory(inventoryList);
   };
 
-  const addItem = async (item) => {
+  const addItem = async (item, quantity = 1) => {
     const docRef = doc(collection(firestore, "inventory"), item);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      const { quantity } = docSnap.data();
-      await setDoc(docRef, { quantity: quantity + 1});
+      const { quantity: existingQuantity } = docSnap.data();
+      await setDoc(docRef, { quantity: existingQuantity + quantity });
     } else {
-      await setDoc(docRef, { quantity: 1, imgSrc });
+      await setDoc(docRef, { quantity, imgSrc });
     }
     await updateInventory();
   };
@@ -132,9 +134,19 @@ export default function Home() {
   const handleUploadClose = () => setUploadOpen(false);
 
   const handleAddItem = async () => {
-    
-    await addItem(itemName);
+    const quantity = Number(itemQuantity);
+    if (
+      itemQuantity === "" ||
+      !Number.isInteger(quantity) ||
+      quantity <= 0
+    ) {
+      setQuantityError("Please enter a positive whole number for quantity.");
+      return;
+    }
+    setQuantityError("");
+    await addItem(itemName, quantity);
     setItemName("");
+    setItemQuantity("");
     setOpen(false);
   };
 
@@ -204,10 +216,23 @@ export default function Home() {
               <TextField
                 variant="outlined"
                 fullWidth
+                placeholder="Item name"
                 value={itemName}
                 onChange={(e) => {
                   setItemName(e.target.value);
                 }}
+              />
+              <TextField
+                variant="outlined"
+                type="number"
+                placeholder="Quantity"
+                value={itemQuantity}
+                onChange={(e) => {
+                  setItemQuantity(e.target.value);
+                  if (quantityError) setQuantityError("");
+                }}
+                error={Boolean(quantityError)}
+                helperText={quantityError}
               />
               <Button
                 sx={{
