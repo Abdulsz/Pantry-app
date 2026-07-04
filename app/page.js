@@ -496,11 +496,19 @@ export default function Home() {
                   }}
                 />
                 <Box p={2}>
-                  <Typography variant="h5" color="#333" textAlign="center">
+                  <Typography
+                    variant="h5"
+                    color={darkMode ? "#fff" : "#333"}
+                    textAlign="center"
+                  >
                     {name.charAt(0).toUpperCase() + name.slice(1)}
                   </Typography>
 
-                  <Typography variant="h5" color="#333" textAlign="center">
+                  <Typography
+                    variant="h5"
+                    color={darkMode ? "#fff" : "#333"}
+                    textAlign="center"
+                  >
                     {quantity}
                   </Typography>
 
