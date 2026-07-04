@@ -38,6 +38,20 @@ export default function Home() {
   const [imgSrc, setImgSrc] = useState(null);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("darkMode");
+    if (saved !== null) {
+      setDarkMode(saved === "true");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
+
+  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
 
 
@@ -143,7 +157,14 @@ export default function Home() {
   );
 
   return (
-    <Box>
+    <Box
+      width="100%"
+      minHeight="100vh"
+      bgcolor={darkMode ? "#121212" : "#fff"}
+      sx={{
+        transition: "background-color 0.3s ease",
+      }}
+    >
       <Container width="100%" height="350px" position="relative">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/fooddelivery-6176f.appspot.com/o/inventory%2Fnew%20tomatos.jpg?alt=media&token=df7c6654-3ae9-42df-8278-fd87f9765c4a"
@@ -161,6 +182,7 @@ export default function Home() {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        gap={2}
         py={4}
       >
         <Typography
@@ -171,6 +193,24 @@ export default function Home() {
         >
           Manage Your Pantry
         </Typography>
+        <Button
+          variant="contained"
+          onClick={toggleDarkMode}
+          sx={{
+            backgroundColor: darkMode ? "#DD5349" : "black",
+            color: "white",
+            "&:hover": {
+              backgroundColor: darkMode ? "#ff6659" : "#333333",
+            },
+            fontFamily: "'Roboto', sans-serif",
+            textTransform: "none",
+            padding: "10px 20px",
+            fontSize: "16px",
+            fontWeight: 500,
+          }}
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </Button>
       </Box>
 
       <Box
@@ -188,7 +228,7 @@ export default function Home() {
             top="50%"
             left="50%"
             width={600}
-            bgcolor="white"
+            bgcolor={darkMode ? "#1e1e1e" : "white"}
             border="2px solid #0000"
             boxShadow={24}
             p={4}
@@ -199,7 +239,9 @@ export default function Home() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <Typography variant="h6">Add Item</Typography>
+            <Typography variant="h6" color={darkMode ? "#fff" : "#000"}>
+              Add Item
+            </Typography>
             <Stack width="100%" direction="row" spacing={2}>
               <TextField
                 variant="outlined"
@@ -207,6 +249,19 @@ export default function Home() {
                 value={itemName}
                 onChange={(e) => {
                   setItemName(e.target.value);
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: darkMode ? "#2c2c2c" : "#fff",
+                    color: darkMode ? "#fff" : "#000",
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: darkMode ? "#aaa" : "rgba(0, 0, 0, 0.6)",
+                  },
+                  "& .MuiOutlinedInput-input::placeholder": {
+                    color: darkMode ? "#aaa" : "rgba(0, 0, 0, 0.6)",
+                    opacity: 1,
+                  },
                 }}
               />
               <Button
@@ -273,7 +328,7 @@ export default function Home() {
             top="50%"
             left="50%"
             width={600}
-            bgcolor="white"
+            bgcolor={darkMode ? "#1e1e1e" : "white"}
             border="2px solid #0000"
             boxShadow={24}
             p={4}
@@ -316,7 +371,7 @@ export default function Home() {
             top="50%"
             left="50%"
             width={400}
-            bgcolor="white"
+            bgcolor={darkMode ? "#1e1e1e" : "white"}
             border="2px solid #0000"
             boxShadow={24}
             p={4}
@@ -327,7 +382,9 @@ export default function Home() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <Typography variant="h6">Upload Image</Typography>
+            <Typography variant="h6" color={darkMode ? "#fff" : "#000"}>
+              Upload Image
+            </Typography>
             <input type="file" onChange={handleFileChange} />
             <Button
               sx={{
@@ -350,7 +407,9 @@ export default function Home() {
             </Button>
             {imgSrc && (
               <Box>
-                <Typography variant="body1">Uploaded Image:</Typography>
+                <Typography variant="body1" color={darkMode ? "#fff" : "#000"}>
+                  Uploaded Image:
+                </Typography>
                 <img src={imgSrc} alt="Uploaded" style={{ width: "100%" }} />
               </Box>
             )}
@@ -383,6 +442,15 @@ export default function Home() {
             placeholder="Search Items"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: darkMode ? "#2c2c2c" : "#fff",
+                color: darkMode ? "#fff" : "#000",
+              },
+              "& .MuiInputLabel-root": {
+                color: darkMode ? "#aaa" : "rgba(0, 0, 0, 0.6)",
+              },
+            }}
           />
         </Box>
 
@@ -394,7 +462,7 @@ export default function Home() {
             alignItems="center"
             justifyContent="left"
           >
-            <Typography variant="h3" color="#000">
+            <Typography variant="h3" color={darkMode ? "#fff" : "#000"}>
               Inventory Items
             </Typography>
           </Box>
@@ -432,11 +500,19 @@ export default function Home() {
                   }}
                 />
                 <Box p={2}>
-                  <Typography variant="h5" color="#333" textAlign="center">
+                  <Typography
+                    variant="h5"
+                    color={darkMode ? "#fff" : "#333"}
+                    textAlign="center"
+                  >
                     {name.charAt(0).toUpperCase() + name.slice(1)}
                   </Typography>
 
-                  <Typography variant="h5" color="#333" textAlign="center">
+                  <Typography
+                    variant="h5"
+                    color={darkMode ? "#fff" : "#333"}
+                    textAlign="center"
+                  >
                     {quantity}
                   </Typography>
 
