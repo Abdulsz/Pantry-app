@@ -11,7 +11,10 @@ import {
   TextField,
   Button,
   Container,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import {
   collection,
   getDocs,
@@ -383,6 +386,20 @@ export default function Home() {
             placeholder="Search Items"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            InputProps={{
+              endAdornment: searchQuery ? (
+                <InputAdornment position="end">
+                  <IconButton
+                    size="small"
+                    onClick={() => setSearchQuery("")}
+                    edge="end"
+                    aria-label="clear search"
+                  >
+                    <ClearIcon />
+                  </IconButton>
+                </InputAdornment>
+              ) : null,
+            }}
           />
         </Box>
 
