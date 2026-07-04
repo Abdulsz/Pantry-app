@@ -258,6 +258,10 @@ export default function Home() {
                   "& .MuiInputLabel-root": {
                     color: darkMode ? "#aaa" : "rgba(0, 0, 0, 0.6)",
                   },
+                  "& .MuiOutlinedInput-input::placeholder": {
+                    color: darkMode ? "#aaa" : "rgba(0, 0, 0, 0.6)",
+                    opacity: 1,
+                  },
                 }}
               />
               <Button
